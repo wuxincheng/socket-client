@@ -13,12 +13,10 @@ import java.net.Socket;
 public class SocketClient {
 
 	public static void main(String[] args) {
-		SocketClient client = new SocketClient();
-		
-		client.start(); // 执行
+		start(); // 执行
 	}
 
-	public void start() {
+	public static void start() {
 		Socket socket = null;
 		String inputContent = null;
 		
@@ -84,7 +82,7 @@ public class SocketClient {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String processSystemInMessage() throws IOException{
+	private static String processSystemInMessage() throws IOException{
 		String inputContent;
 		
 		// 读取从控制台输入的数据
@@ -108,7 +106,7 @@ public class SocketClient {
 	 * @return
 	 * @throws IOException 
 	 */
-	public static String sendMessage(Socket socket, String sendData) throws IOException{
+	private static String sendMessage(Socket socket, String sendData) throws IOException{
 		BufferedWriter writer = null;
 		
 		writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -129,7 +127,7 @@ public class SocketClient {
 	 * @return
 	 * @throws IOException 
 	 */
-	public static String recevieMessage(Socket socket) throws IOException{
+	private static String recevieMessage(Socket socket) throws IOException{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		String response = reader.readLine();
 		
